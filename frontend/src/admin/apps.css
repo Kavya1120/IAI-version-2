@@ -1,0 +1,21 @@
+.App{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  input,button{
+    width: 200px;
+    height: 30px;
+    font-size: 20px;
+    margin: 5px;
+  }
+  .btn {
+    display: block;
+    margin: auto;
+    background-color: dodgerblue;
+    border-radius: 0.2rem;
+    width: fit-content;
+  }

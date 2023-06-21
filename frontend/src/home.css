@@ -1,0 +1,151 @@
+
+.u-video{
+    margin-left: 15%;
+  }
+
+  .col-md-5
+  {
+    margin-left: 1.4%;
+  }
+  
+  .content row
+  {
+   
+    padding-top: 1000px;
+    margin-top: 30%;
+  }
+  .content.row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+
+  .col-md-5 .ratio {
+    height: 100%;
+  }
+  
+  .col-md-5 iframe {
+    height: 100%;
+  }
+  .col-md-6 {
+    margin-top: 20px; 
+  }
+  
+
+  @media (max-width: 768px) {
+    .content.row {
+        flex-direction: column;
+    }
+  
+    .col-md-5 {
+        flex: 1 1 auto;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+  
+    .col-md-7 {
+        flex: 1 1 auto;
+    }
+  }
+
+
+
+
+
+
+
+  
+  .card
+  {
+    background-color: rgb(249, 244, 244);
+  }
+  .nav-bar{
+    /* background: transparent;
+    backdrop-filter: blur(10px); */
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+
+   
+  }
+  .a
+  {
+
+    padding-top: 100px;
+    overflow: hidden;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    
+  
+  }
+  
+  a{
+    color: #3386b0;
+  }
+
+  a:hover{
+    color: #1A374D;
+  }
+  
+  
+  
+  .list-group-item a {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+  
+  .list-group-item a:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(transparent, rgba(255, 255, 255, 0.5));
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .list-group-item a:hover:before,
+  .list-group-item a:focus:before {
+    transform: translateX(0%);
+  }
+  
+  .list-group-item a:hover,
+  .list-group-item a:focus {
+    transform: translateX(10px);
+  }
+  /*mmmm*/
+
+  
+  .animated {
+    animation-name: color-change;
+    animation-duration: 1.8s;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes color-change {
+    0% {
+      color: red;
+    }
+    50% {
+      color: rgb(20, 154, 211);
+    }
+    100% {
+      color: green;
+    }
+  }
+  .col-md-10
+  {
+    width: 350px;
+  }
+  
+  

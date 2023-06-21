@@ -1,0 +1,18 @@
+.outer-container
+
+  {
+    background-color: #eef2f5; 
+    width: 700px;
+  }
+
+  .outer-div
+  {
+    background-color: #e0ecf5; 
+
+  }
+input:focus,
+input:hover,
+textarea:hover ,
+textarea:focus {
+  outline: 2.3px solid rgb(7, 171, 119); 
+}

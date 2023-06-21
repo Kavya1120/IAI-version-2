@@ -1,0 +1,177 @@
+
+.registration-split-page{
+  display: flex;
+  flex-direction: row;
+  height: auto;
+}
+
+
+.register-left-section h1{
+  color: #fff;
+}
+
+  .register-split-page{
+    display: flex;
+    flex-direction: row;
+    height:150vh;
+  }
+  .register-left-section {
+    flex: 1;
+    background-color: #146C94;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .register-h1{
+    margin-top: 1rem;
+    margin-left: 1rem;
+    font-size: 45px;
+    line-height: 48.41px;
+    
+    text-align: center;
+  }
+  .register-left-section img {
+    max-width: 100%;
+    max-height: 100%;
+
+  }
+  .register-left-main{
+     max-width: 20rem;
+    margin-top: 1rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .register-right-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    min-height: 100vh;
+    background-color: #F6F1F1;
+   
+  }
+  
+  .register-right-fields{
+    width: 60%;
+    transition: height 3s ease;
+  }
+
+
+  .register-left-main img{
+    bottom:10px;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .links p:nth-child(2){
+    float: right;
+    
+  }
+
+
+
+  .links P:nth-child(1){
+    float: left;
+  }
+
+  .reg-form
+   {
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  h2{
+    text-align: center;
+  }
+
+ 
+
+
+
+
+  label {
+    display: block;
+    /* margin-bottom: 10px; */
+  }
+  
+  .register-right-section input,
+  textarea {
+    display: block;
+    max-width: 460px;
+    width: 100%;
+    /* padding: 10px; */
+    /* margin-bottom: 20px; */
+    border: 1px solid #ccc;
+  }
+  
+  button[type="submit"] {
+    display: block;
+    background-color: #3483d7;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+
+
+  button:hover{
+    background-color: #2A2F4F;
+    transition: 0.7s;
+  }
+
+  .acc-link{
+    color: #007bff;
+  }
+
+  p{
+    font-size: smaller;
+    display: inline;
+  }
+
+  a:hover{
+    color: black;
+    transition: 0.7s;
+  }
+
+
+  
+
+  @media only screen and (max-width: 768px) {
+    .split-page {
+      display: flex;
+      flex-direction: column;
+    }
+    .registration-split-page {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    
+    .register-left-section {
+      display: inline-block;
+    }
+    .register-left-section h1{
+      left: 0;
+    }
+    .register-left-main img{
+      padding-left: 5%;
+      padding-bottom: 5%;
+      padding-right: 5%;
+    }
+    .register-right-section {
+      flex-basis: 50%;
+    }
+
+    .register-right-fields{
+      width: 80%;
+    }
+
+    h2{
+      margin-top: 1em;
+    }
+  }

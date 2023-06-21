@@ -1,0 +1,14 @@
+.otp-input{
+    width: 2rem !important;
+    display: inline !important;
+}
+
+.otp-button{
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.otp-container{
+    padding-top: 8%;
+}

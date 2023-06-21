@@ -1,0 +1,94 @@
+.activity-body
+{
+    background-color: rgba(228, 245, 250, 0.25);
+}
+  .profile
+   {
+    display: flex;
+    align-items: center;
+    height:350px;
+    border: 2px rgb(0, 0, 0);
+  }
+ 
+  
+  .left,.right
+  {
+    flex-basis: 50%;
+    justify-content: center; 
+
+  }
+
+  .button-container
+  {
+    display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  grid-gap: 10px; 
+    
+  }
+  
+  .about, .projects, .skills, .education
+   {
+    background: rgba(234, 207, 207, 0.2); 
+    backdrop-filter: blur(10px); 
+    border-radius: 10px;/* Add padding to the content area */
+    height: 330px;
+    background-color: red;
+  }
+  
+  .activities-container h4, .projects-container h4, .newpost-container h4
+   {
+    color: rgb(22, 3, 3); /* Set the text color */
+    font-size: 18px; /* Adjust font size as needed */
+    font-weight: bold; /* Set font weight as needed */
+    margin-bottom: 10px; /* Add margin to separate the heading and content */
+    height: 350px;
+  }
+  .activities-container,
+.projects-container,
+.newpost-container
+ {
+  background: rgba(241, 247, 247, 0.8); /* Set a semi-transparent background color */
+  backdrop-filter: blur(10px); /* Apply a blur effect to create the glass-like appearance */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
+  border-radius: 8px; /* Apply rounded corners to the container */
+  padding: 20px; /* Add padding for content spacing */
+  margin-bottom: 20px; /* Add margin to separate the containers */
+}
+
+  
+  .left-button,.right-button
+  {
+    display: flex;
+    justify-content: center; 
+  }
+
+ .profile-button
+ {
+     border-radius: 3%;
+     background: linear-gradient(to bottom, #9ad1f9, #0056b3); /* Blue gradient color */
+     color: white;
+     width: 100%;
+
+   }
+   .activity-contact
+   {
+       width:20%;
+   }
+ .Activities-button
+ {
+    border-radius: 3%;
+    background: linear-gradient(to bottom, #9ad1f9, #0056b3); /* Blue gradient color */
+  color: white;
+  width: 100%;
+
+  /*hovering effect*/
+
+
+  .profile-button:hover,
+  .Activities-button:hover {
+    background: linear-gradient(to bottom, #0056b3, #9ad1f9); /* Blue gradient color reversed on hover */
+    cursor: pointer;
+  }
+
+ }
+ 

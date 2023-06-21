@@ -1,0 +1,23 @@
+{
+  "name": "iai",
+  "version": "1.0.0",
+  "description": "Industrial Academic Interaction portal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aravindh0799/IAI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aravindh0799/IAI/issues"
+  },
+  "homepage": "https://github.com/Aravindh0799/IAI#readme",
+  "dependencies": {
+    "corousel": "^0.1.8"
+  }
+}

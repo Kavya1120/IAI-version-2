@@ -1,0 +1,168 @@
+.split-page {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+  }
+.registration-split-page{
+  display: flex;
+  flex-direction: row;
+  height: auto;
+}
+
+  .register-split-page{
+    display: flex;
+    flex-direction: row;
+    height:120vh;
+  }
+  .left-section {
+    flex: 1;
+    background-color: #146C94; /*3aaed4*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .left-section h1{
+    margin-top: 1rem;
+    margin-left: 1rem;
+    font-size: 45px;
+    line-height: 48.41px;
+    color: #fff;
+  }
+  .left-section img {
+    max-width: 100%;
+    max-height: 100%;
+
+  }
+  .left-main{
+     max-width: 20rem;
+    margin-top: 1rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .login-right-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #F6F1F1;
+  }
+  
+.login-right-section h2{
+  font-size: 45px;
+}
+
+  .login-right-fields{
+    width: 60%;
+  }
+
+
+  .left-main img{
+    bottom:10px;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .links p:nth-child(2){
+    float: right;
+    
+  }
+
+
+
+  .links P:nth-child(1){
+    float: left;
+  }
+
+  .samplelogin-form {
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .login-h2{
+    text-align: center;
+  }
+
+ .login-label {
+    display: block;
+    /* margin-bottom: 10px; */
+  }
+  
+  .login-input,
+  textarea {
+    display: block;
+    width: 100%;
+    /* padding: 10px; */
+    /* margin-bottom: 20px; */
+    border: 1px solid #ccc;
+  }
+  
+  .login-button{
+    display: block;
+    background-color: #19A7CE;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+
+
+  button:hover{
+    background-color: #146C94;
+    transition: 0.7s;
+    color: #fff;
+  }
+
+  .acc-link{
+    color: #007bff;
+  }
+
+  .login-p{
+    font-size: smaller;
+    display: inline;
+  }
+
+  a:hover{
+    color: black;
+    transition: 0.7s;
+  }
+  
+
+  @media only screen and (max-width: 768px) {
+    .split-page {
+      display: flex;
+      flex-direction: column;
+    }
+    .registration-split-page {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    
+    .left-section {
+      display: inline-block;
+    }
+    .left-section h1{
+      left: 0;
+    }
+    .left-main img{
+      padding-left: 5%;
+      padding-bottom: 5%;
+      padding-right: 5%;
+    }
+    .right-section {
+      flex-basis: 50%;
+    }
+
+    .right-fields{
+      width: 80%;
+    }
+
+    .login-h2{
+      margin-top: 1em;
+    }
+  }
