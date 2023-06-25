@@ -8,6 +8,29 @@
   position: sticky;
   top: 73px;
 }
+.button-click{
+  cursor: pointer;
+  margin-top: 2%;
+}
+.label-icon{
+  display: flex;
+  flex-direction: row;
+}
+.edu-label , .exp-label{
+  margin-right: 10px;
+}
+.delete-btn-ed{
+  color: red;
+  align-self: center;
+}
+.profile-form{
+  max-width: none !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  padding-bottom: 1rem;
+}
 
 .profile-container {
   background: #fff;
@@ -35,6 +58,9 @@
   margin-top: -75px;
   padding: 5px;
   background: #fff;
+  height: 150px;
+  
+  object-fit: cover;
 }
 
 .profile-container h1 {
@@ -168,3 +194,64 @@ color: #fff;
   font-size: 12px;
   font-weight: 500;
 }
+
+/* #uploadBtn{
+  height: 40px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  background: rgba(0, 0, 0, 0.7);
+  color: wheat;
+  line-height: 30px;
+  font-family: sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  display: none;
+}
+#file{
+  display: none;
+}
+  */
+
+  .profile-container-inner {
+    position: relative;
+  }
+  
+  .edit-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    width: 150px;
+    height: 150px;
+  border-radius: 50%;
+  margin-top: -75px;
+  margin-left: 20%;
+  padding: 5px;
+  background: rgba(0,0,0,0.2);
+  }
+  
+  .edit-icon:hover {
+    opacity: 1;
+  }
+  
+  .edit-icon-btn {
+    color: wheat;
+    font-size: 24px;
+  }
+  
+  #file {
+    display: none;
+  }
+  
