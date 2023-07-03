@@ -17,6 +17,7 @@ const REGISTER_URL = '/register';
 const Register = () => {
     const userRef = useRef();
     const errRef = useRef();
+    const [loading, setLoading] = useState(false)
 
     const [user, setUser] = useState('');
     const [validName, setValidName] = useState(false);
@@ -151,6 +152,7 @@ const Register = () => {
           
           if(affiliationType === "academic"){
             try {
+                setLoading(true)
                 const response =  await Axios.post('http://localhost:6080/find-username',{
             
                     email:email
@@ -181,6 +183,7 @@ const Register = () => {
                                     const otp = res.data.otp
                                     Axios.post('http://localhost:6080/mailer',{email:email,subject:"OTP for registration",content:`Kindly use the following OTP to complete the registration  ${otp}`}).then(res=>{
                                         if(res.data.status =="success"){
+                                            setLoading(false)
                                             setSuccess(true);
                                             
                                         }
@@ -228,9 +231,13 @@ const Register = () => {
                 }
                 // errRef.current.focus();
             }
+            finally{
+                setLoading(false)
+            }
         }
         else if(affiliationType === 'industry'){
             try {
+                setLoading(true)
                 const response =  await Axios.post('http://localhost:6080/find-username',{
             
                     email:email
@@ -259,6 +266,7 @@ const Register = () => {
                                 const otp = res.data.otp
                                 Axios.post('http://localhost:6080/mailer',{email:email,subject:"OTP for registration",content:`Kindly use the following OTP for registration ${otp}`}).then(res=>{
                                     if(res.data.status =="success"){
+                                        setLoading(false)
                                         setSuccess(true);                                        
                                     }
                                     else{
@@ -300,6 +308,9 @@ const Register = () => {
                     setErrMsg('Registration Failed');
                 }
                 // errRef.current.focus();
+            }
+            finally{
+                setLoading(false)
             }
         }
     }
@@ -499,7 +510,9 @@ const Register = () => {
                         </div>
 
                         <button type="submit" disabled={!validName || !validEmail || !affiliationType || 
-                             !validPwd || !validMatch ? true : false}>Sign Up</button>
+                             !validPwd || !validMatch ? true : false}>
+                             {loading?"Loading....":"Sign up"}
+                             </button>
                     </form>
                     <p className="regEnd">
                         Already registered? 
