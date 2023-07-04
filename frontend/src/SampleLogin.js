@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "./Samplelogin.css"; 
+// import "./Samplelogin.css"; 
+import "./components/css/RegisterNew.css"
 import Axios from 'axios';
 import Image from './assets/signup_image_1.jpg'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -145,28 +146,23 @@ useEffect(() => {
   };
 
   return (
-    <div className="split-page">
+    
 
-              <ToastContainer />
+              
 
+                            <div className="reg-form-body"> 
+                            <ToastContainer />
 
-                <div className="left-section">
-                  <h1 className="login-h1">LOGO</h1>
-                  <div className="left-main">
-                    <img src={Image} alt="login_image" />
-                  </div>
-                </div>
-
-
-              <div className="login-right-section">
-                        <div className="login-right-fields">
-                              <h2 login-h2>LOGIN</h2>
-                              <form onSubmit={handleSubmit} className="samplelogin-form">
+                              <section className="container-reg login-section">
+                              
+                              <header>Login Here</header>
+                              <form onSubmit={handleSubmit} className="samplelogin-form form">
+                                <div className="input-box">
                                       <label className="login-label">
                                               Email:
                                               <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
                                               <FontAwesomeIcon icon={faTimes} className={validEmail || !email ? "hide" : "invalid"} />
-                                              <input type="text" 
+                                              <input 
                                               name="email" 
                                               value={email} 
                                               onChange={handleEmailChange}
@@ -176,8 +172,12 @@ useEffect(() => {
                                               onBlur={() => setEmailFocus(false)}
                                               formnovalidate="formnovalidate"
                                               className="login-input" 
+                                              type="email"
+                                              id="Email"
                                               />
                                       </label>
+                                      </div>
+                                      <div className="input-box">
                                       <label className="login-label">
                                               Password:
                                               <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
@@ -194,6 +194,7 @@ useEffect(() => {
                                               className="login-input" 
                                               />
                                       </label>
+                                      </div>
                                        <br/>
 
 
@@ -211,9 +212,10 @@ useEffect(() => {
 
 
                               </form>
+                      </section>
                       </div>
-              </div>
-    </div>
+            
+    
   );
 }
 

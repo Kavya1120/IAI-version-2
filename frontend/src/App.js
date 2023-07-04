@@ -24,9 +24,11 @@ import Child from './child'
 import ModalForm from "./components/ProfileModal";
 import NewProfile from "./components/NewProfile";
 import MainProfile from "./components/EditProfile";
-
+import Data from './components/Data.json'
+import SearchBar from "./components/Searchbar";
 import Newupload from "./admin/newUpload"
 import Buckect from "./buckect"
+import RegisterNew from "./components/RegisterNew";
 
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
       
     <Routes>
     <Route path="/register" element={<Register />} />
+    <Route path="/registerNew" element={<RegisterNew />} />
+    <Route path="/search"  element={<SearchBar placeholder="Search here..." data={Data}/>} />
     <Route path="/login" element={<Login />} />
     <Route path="/buckect" element={<Buckect/>} />
     <Route path="/samplelogin" element={< Sample/>}/>

@@ -27,7 +27,7 @@
   max-width: 600px;
 }
 
-.input-box input[type="text"] {
+.input-box-search input[type="text"] {
   padding: 15px 20px;
   border: none;
   border-radius: 17px;

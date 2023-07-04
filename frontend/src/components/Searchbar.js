@@ -29,7 +29,7 @@ function SearchBar({ placeholder, data }) {
   return (
     <div className="search search-body">
       <nav><Navbar1></Navbar1></nav>
-      <div className="searchInputs input-box">
+      <div className="searchInputs input-box-search">
         <input
           type="text"
           placeholder={placeholder}
