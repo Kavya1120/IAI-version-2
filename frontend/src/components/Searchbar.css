@@ -1,80 +1,92 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.search-body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-image: url('../images/bg2.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(12px);
+}
+
 .searchInputs {
-    /* margin-top: 105px; */
-    display: flex;
-  }
-  .search{
-    position: fixed;
-    top: 32%;
-    left: 19%p;
-  }
-  
-  .search input {
-    background-color: white;
-    border: 0;
-    border-radius: 2px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    font-size: 18px;
-    padding: 15px;
-    height: 30px;
-    width: 300px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.input-box input[type="text"] {
+  padding: 15px 20px;
+  border: none;
+  border-radius: 17px;
+  font-size: 16px;
+  width: 100%;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.searchIcon {
+  position: absolute;
+  right: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.searchIcon svg {
+  font-size: 25px;
+}
+
+.dataResult {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 560px;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 8px;
+  max-height: calc(100vh - 220px);
+  overflow-y: auto;
+}
+
+.dataItem {
+  display: block;
+  padding: 4px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.dataItem:hover {
+  background-color: rgba(234, 229, 229, 0.1);
+  color: #AFEEEE
+}
+
+p {
+  margin: 0;
+}
+
+
+@media (max-width: 600px) {
+  .searchInputs {
+    max-width: 100%;
   }
   
   .searchIcon {
-    height: 30px;
-    width: 50px;
-    background-color: gray;
-    display: grid;
-    place-items: center;
+    right: 0;
+    top: 4px;
   }
-  
-  input:focus {
-    outline: none;
-  }
-  .searchIcon svg {
-    font-size: 35px;
-  }
-  
-  .dataResult {
-    margin-top: 5px;
-    width: 300px;
-    height: 200px;
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    overflow: hidden;
-    overflow-y: auto;
-  }
-  
-  .dataResult::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .dataResult .dataItem {
-    width: 100%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    color: black;
-  }
-  
-  .dataItem p {
-    margin-left: 10px;
-  }
-  .dataItem {
-    text-decoration: none;
-  }
-  
-  .dataItem:hover {
-    background-color: lightgrey;
-  }
-  
-  #clearBtn {
-    cursor: pointer;
-  }
-  @media screen and (max-width:850px){
-    .search{
-      position: fixed;
-      top: 32%;
-      left: 19%;
-    }
-  }
+}

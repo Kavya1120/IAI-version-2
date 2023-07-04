@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Searchbar.css";
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
+import Navbar1 from './Navbar1';
 function SearchBar({ placeholder, data }) {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
@@ -26,13 +27,15 @@ function SearchBar({ placeholder, data }) {
   };
 
   return (
-    <div className="search">
-      <div className="searchInputs">
+    <div className="search search-body">
+      <nav><Navbar1></Navbar1></nav>
+      <div className="searchInputs input-box">
         <input
           type="text"
           placeholder={placeholder}
           value={wordEntered}
           onChange={handleChange}
+          className="search-input-text"
         />
         <div className="searchIcon">
           {filteredData.length === 0 ? (

@@ -33,11 +33,18 @@ export const MenuItemsforAcademy = [
         icon : "fa-sharp fa-regular fa-bell"
     },
     {
+        title:"search",
+        url:"search",
+        cName: "nav-links",
+        icon:"fas fa-search"
+    },
+    {
         title:"username",
         url:"profile",
         cName:" nav-links",
         icon:"fa-solid fa-circle-user"
     },
+   
     {
         title : "Logout",
         url : "/",
@@ -77,6 +84,12 @@ export const MenuItemsforIndustry = [
         url : "#",
         cName : "nav-links",
         icon : "fa-sharp fa-regular fa-bell"
+    },
+    {
+        title:"search",
+        url:"search",
+        cName: "nav-links",
+        icon:"fas fa-search"
     },
     {
         title:"username",
