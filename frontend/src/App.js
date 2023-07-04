@@ -26,6 +26,8 @@ import NewProfile from "./components/NewProfile";
 import MainProfile from "./components/EditProfile";
 
 import Newupload from "./admin/newUpload"
+import Buckect from "./buckect"
+
 
 function App() {
   const loggedin = localStorage.getItem("is logged in");
@@ -36,6 +38,7 @@ function App() {
     <Routes>
     <Route path="/register" element={<Register />} />
     <Route path="/login" element={<Login />} />
+    <Route path="/buckect" element={<Buckect/>} />
     <Route path="/samplelogin" element={< Sample/>}/>
     <Route path='/reset/:token/:id' element={<Reset/>} />
     <Route path='/forgotpassword' element={<Forget/>} />
