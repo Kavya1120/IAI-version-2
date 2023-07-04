@@ -62,6 +62,9 @@ const industrySchema = new mongoose.Schema({
     detailsprovided:{
         type:Boolean,
         default:false
+    },
+    imageUrl:{
+        type:String
     }
 })
 //for student

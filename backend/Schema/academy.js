@@ -59,6 +59,9 @@ const academySchema = new mongoose.Schema({
     detailsprovided:{
         type:Boolean,
         default:false
+    },
+    imageUrl:{
+        type:String
     }
 })
 

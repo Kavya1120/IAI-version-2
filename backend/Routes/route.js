@@ -652,6 +652,47 @@ router.post('/insertprofile', async (req, res) => {
       }
       
   });
+
+  router.post('/editprofile', async (req, res) => {
+    try {
+      const profileData = {
+        imageUrl : req.body.imageUrl
+      };
+      const email = req.body.email;
+  
+      const academyprofile = await academy.findOne({email: email})
+      const industryprofile = await industry.findOne({email:email})
+      if(academyprofile){
+        const updatedProfile = await academy.updateOne({ email: email }, profileData);
+  
+      if (updatedProfile) {
+        res.status(201).json({ statusMsg: 'success' });
+      } else {
+        res.status(500).json({ errorMsg: 'failed' });
+      }
+    
+    }
+    else if(industryprofile){
+        const updatedProfile = await industry.updateOne({ email: email }, profileData);
+  
+      if (updatedProfile) {
+        res.status(201).json({ statusMsg: 'success' });
+      } else {
+        res.status(500).json({ errorMsg: 'failed' });
+      }
+    }
+    else{
+        res.json({
+            message: "no user found"
+        })
+    }
+
+
+} catch (error) {
+        console.log('Error in updating the profile details:', error);
+      }
+      
+  });
   
 
   router.post('/fetchProfileData', async (req, res) => {

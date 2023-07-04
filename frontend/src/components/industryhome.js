@@ -4,8 +4,22 @@ import "../newhome.css";
 import Navbar1 from './Navbar1';
 import Footer from './footer';
 import NewsFeed from './newsfeed';
+import { useState, useEffect } from 'react';
+import Axios  from "axios";
 import Caarousel from './corousel';
 function Industry() {
+      const [youtubeUrls, setYoutubeUrls] = useState([]);
+      
+      useEffect(() => {
+            const youtubeUrlRow=Axios.get('http://localhost:6080/fetchallurls')
+            .then((response) => {
+              console.log("res==========>",response.data.data)
+              setYoutubeUrls(response.data.data)
+              console.log("youtubeurl industry===>",youtubeUrls)
+            }).catch((error)=>{
+                  console.log(error)
+            })
+          },[])
   return (
 
     <>
@@ -37,11 +51,13 @@ function Industry() {
                               </div>
                               <div class="col-md-6">
                                     <div class="demo-content_video" > 
-                                            <iframe src="https://www.youtube.com/embed/dual15LJEhA"
+                                    {youtubeUrls.length > 0 && (
+                                            <iframe src={youtubeUrls[0].url}
                                                     title="YouTube video player" frameborder="0"
                                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                                     allowfullscreen>
                                            </iframe>
+                                    )}
                                     </div>
                               </div>
           </div>

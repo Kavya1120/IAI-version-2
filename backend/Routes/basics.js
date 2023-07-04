@@ -10,6 +10,7 @@ const otp = require('otp-generator')
 const domains = require('../Schema/domain');
 const urls = require('../Schema/url');
 const newsfeed = require('../Schema/news');
+const uploadImage = require("../Schema/uploadProfilePic");
 const e = require('express')
 const domain = require('../Schema/domain')
 const JWT_SECRET = "ciwbuconciwevccwu1229238c/idb871cb91383hc}28vwrgbw8b748{62[]()68cwv";
@@ -416,5 +417,11 @@ router.post('/deletedomain',async(req, res)=>{
     }
 
 })
+
+router.post("/uploadImage", (req, res) => {
+    uploadImage(req.body.image)
+      .then((url) => res.send(url))
+      .catch((err) => res.status(500).send(err));
+  });
 
 module.exports=router                            

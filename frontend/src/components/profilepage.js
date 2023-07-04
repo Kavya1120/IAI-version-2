@@ -2,26 +2,20 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from "react-dom";
 import coverimg from "../images/cover-pic.png"
 import usermainImg from "../images/user-main.jpg"
-//  
-// import user2 from "../images/user-2.png"
-// import connectImg from "../images/connect.png"
-// import chatImg from "../images/chat.png"
 import microsoftImg from "../images/microsoft.png"
-// import slackImg from "../images/slack.png";
-// import googleImg from "../images/google.png"
-// import rightArrowImg from "../images/right-arrow.png"
-// import northImg from "../images/north.png"
-// import swinburnImg from "../images/Swinburn.png"
 import stanfordImg from "../images/stanford.png"
+import {ToastContainer, toast} from 'react-toastify';
 import { BsFillPencilFill , BsPencilSquare } from "react-icons/bs";
 import Axios  from "axios";
-// import {Container} from 'react-bootstrap'
 import Navbar1 from '../components/Navbar1';
 import "./profilepage.css";
 const ProfilePage =({openModal}) =>{
 
     const [profileData ,  setProfileData] = useState({});
     const [displayUploadBtn, setDisplayUploadBtn] = useState(false);
+    const [profilePicture, setProfilePicture] = useState(null);
+    const [url, setUrl] = useState("");
+
     
     const [showExperienceDesc,setShowExperienceDesc] = useState(false);
     const affiliation=localStorage.getItem("affiliation");
@@ -58,9 +52,35 @@ const handleMouseEnter = () => {
     setDisplayUploadBtn(false);
   };
 
-  const handleFileChange = (event) => {
+  
+
+  const handleFileChange = async (event) => {
     const choosedFile = event.target.files[0];
     if (choosedFile) {
+      try {
+        const base64 = await convertBase64(choosedFile);
+        Axios.post("http://localhost:6080/uploadImage", { image: base64 })
+          .then((res) => {
+            setUrl(res.data);
+            console.log("imageee=====",res.data)
+            const imageUrl =  res.data
+            const email = localStorage.getItem("userMail");
+            const profileData = {
+              imageUrl:imageUrl,
+              email:email
+            };
+            Axios.post("http://localhost:6080/editprofile",profileData).then((res)=>{
+              if (res.data.statusMsg === "success") {
+                toast.success('Profile picture uploaded successfully!');
+              }
+              else{
+                toast.error('Error occured in uploading the profile picture')
+              }
+            })
+          });
+      } catch (error) {
+        toast.error('An error occurred while uploading the profile picture:', error);
+      }
       const reader = new FileReader();
       reader.addEventListener('load', () => {
         const img = document.querySelector('#photo');
@@ -72,16 +92,34 @@ const handleMouseEnter = () => {
     }
   };
   
+
+
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };  
   
-  const handleEditIconClick = () => {
+  const handleEditIconClick = async () => {
     const fileInput = document.querySelector('#file');
     fileInput.click();
+
   };
  
 
   return (
     <>
     <div class="nav-bar">
+    <ToastContainer />
         <Navbar1></Navbar1>
        </div>
     <div className="container" style={{marginTop:'100px'}}>
@@ -91,7 +129,7 @@ const handleMouseEnter = () => {
                 <img src={coverimg} width="100%"/>
             <div className='profile-container-outer'>
                 <div className="profile-container-inner profile-pic-div">
-                    <img src={usermainImg} className="profile-pic" id='photo'
+                    <img src={profileData.imageUrl} className="profile-pic" id='photo'
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                     />
