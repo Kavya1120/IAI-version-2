@@ -15,7 +15,7 @@ const Uploadpdf = ({ closeModal})=> {
         event.preventDefault();
     
         if (!file) {
-          alert('Please select a PDF file.');
+          toast.error('Please select a PDF file.');
           return;
         }
 

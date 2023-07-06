@@ -2,7 +2,7 @@
 import { useRef, useState, useEffect } from "react";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./Register.css"; 
+import "./components/css/RegisterNew.css"; 
 import Image from './assets/signup_image_1.jpg'
 import Axios  from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -17,7 +17,6 @@ const REGISTER_URL = '/register';
 const Register = () => {
     const userRef = useRef();
     const errRef = useRef();
-    const [loading, setLoading] = useState(false)
 
     const [user, setUser] = useState('');
     const [validName, setValidName] = useState(false);
@@ -152,7 +151,6 @@ const Register = () => {
           
           if(affiliationType === "academic"){
             try {
-                setLoading(true)
                 const response =  await Axios.post('http://localhost:6080/find-username',{
             
                     email:email
@@ -183,7 +181,6 @@ const Register = () => {
                                     const otp = res.data.otp
                                     Axios.post('http://localhost:6080/mailer',{email:email,subject:"OTP for registration",content:`Kindly use the following OTP to complete the registration  ${otp}`}).then(res=>{
                                         if(res.data.status =="success"){
-                                            setLoading(false)
                                             setSuccess(true);
                                             
                                         }
@@ -231,13 +228,9 @@ const Register = () => {
                 }
                 // errRef.current.focus();
             }
-            finally{
-                setLoading(false)
-            }
         }
         else if(affiliationType === 'industry'){
             try {
-                setLoading(true)
                 const response =  await Axios.post('http://localhost:6080/find-username',{
             
                     email:email
@@ -264,9 +257,8 @@ const Register = () => {
                         Axios.post('http://localhost:6080/createotp',{email:email}).then((res)=>{
                             if (res.data.status == "success"){
                                 const otp = res.data.otp
-                                Axios.post('http://localhost:6080/mailer',{email:email,subject:"OTP for registration",content:`Kindly use the following OTP for registration ${otp}`}).then(res=>{
+                                Axios.post('http://localhost:6080/mailer',{email:email,subject:"OTP for registration",content:otp}).then(res=>{
                                     if(res.data.status =="success"){
-                                        setLoading(false)
                                         setSuccess(true);                                        
                                     }
                                     else{
@@ -309,9 +301,6 @@ const Register = () => {
                 }
                 // errRef.current.focus();
             }
-            finally{
-                setLoading(false)
-            }
         }
     }
 
@@ -325,25 +314,16 @@ const Register = () => {
                 )
             ) : (
             
-            <div className="registration-split-page">
-                <ToastContainer></ToastContainer>
-                <div className="register-left-section">
-                    <h1 className="register-h1">LOGO</h1>
-                    <div className="register-left-main">
-                        <img src={Image} alt="login_image" />
-                    </div>
-                </div>
-                <div className="register-right-section">
-                    <div className="register-right-fields">
-                    
+            
+                < div className="reg-form-body"> 
+                <section className="container-reg">
+                <header>Register Here</header>
                     {
                         <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p> 
                     }
-                    <h1 class="register-h1"className="register-h1">Register</h1>
-                    <form onSubmit={handleSubmit} className="reg-form">
-                    <div className="input-container">
-                        
-                    <label htmlFor="username" className="register-label">
+                    <form onSubmit={handleSubmit} className="form">
+                    <div className="input-box">
+                    <label htmlFor="username">
                             Username:
                             <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"} />
                             <FontAwesomeIcon icon={faTimes} className={validName || !user ? "hide" : "invalid"} />
@@ -360,7 +340,6 @@ const Register = () => {
                             aria-describedby="uidnote"
                             onFocus={() => setUserFocus(true)}
                             onBlur={() => setUserFocus(false)}
-                            className="register-textbox"
                         />
                         <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
@@ -369,7 +348,7 @@ const Register = () => {
                             Letters, numbers, underscores, hyphens allowed.
                         </p>
                     </div>
-                        <div className="input-container">
+                        <div className="input-box">
                         <label htmlFor="Email">
                             Email:
                             <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
@@ -387,7 +366,6 @@ const Register = () => {
                             aria-describedby="uidnote"
                             onFocus={() => setEmailFocus(true)}
                             onBlur={() => setEmailFocus(false)}
-                            className="register-textbox"
                         />
                         <p id="uidnote" className={emailFocus && email && !validEmail ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
@@ -397,58 +375,76 @@ const Register = () => {
                         {usernameError  && <p className="errmsg">{usernameError}</p>}
                         </div>
 
-                        <div className="input-container">
+                        <div className="input-box" >
                             <label htmlFor="affiliationType">Affiliation type:</label>
-                            <select id="affiliationType" value={affiliationType} onChange={handleAffiliationTypeChange}>
+                            <div className="select-box">
+                            <select id="affiliationType" value={affiliationType} onChange={handleAffiliationTypeChange} >
                                 <option value="">-- Select --</option>
                                 <option value="academic">Academic</option>
                                 <option value="industry">Industry</option>
                                 
                             </select>
+                            
                             {/* {console.log(   errMsg)} */}
                             {affiliationTypeError  && <p className="errmsg">{affiliationTypeError}</p>}
                         </div>
+                        </div>
 
-                        {showHiddenFields && (
-                            <div className="input-container">
-                            
-                            
+                        {showHiddenFields && (<div><div className="column">
+                            <div className="input-box">
+                        
                             <label htmlFor="cName">Company Name:</label>
                                     <input type="text" id="cName" name="cName" 
                                     value={companyName} onChange={(e) => setCompanyName(e.target.value) }required/>
-                                    
+
+                            </div>   
+                            <div className="input-box">
                             <label htmlFor="desig">Designation:</label>
                                     <input type="text" id="desig" name="desig" 
                                     value={designationName} onChange={(e) => setDesignationName(e.target.value) } required/>
-                                    
+                            </div> 
+                        </div> 
+                            <div className="input-box"> 
                             <label htmlFor="chamberMember">Chamber Member?</label>
-                            <select id="chamberMember" value={chamberMember} onChange={handleSelectChange} required>
+                           <div className="select-box">
+                           <select id="chamberMember" value={chamberMember} onChange={handleSelectChange} required>
                                 <option value="">-- Select --</option>
                                 <option value="yes">Yes</option>
                                 <option value="no">No</option>
-                            </select><br></br>
+                            </select>
+                        </div>
+                        </div>
                         </div>
                         )}
 
                         {showFields && (
-                            <div className="input-container">
+                            <div>
+                            <div className="input-box">
                                 
                             <label htmlFor="academicPosition">Academic Position:</label>
-                            <select id="academicPosition" value={academicPosition} onChange={handleAcademicPositionChange} required>
-                                <option value="">-- Select --</option>
-                                <option value="student">Student</option>
-                                <option value="staff">Staff</option>
-                            </select>
+                                <div className="select-box">
+                                    <select id="academicPosition" value={academicPosition} onChange={handleAcademicPositionChange} required>
+                                        <option value="">-- Select --</option>
+                                        <option value="student">Student</option>
+                                        <option value="staff">Staff</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="column">
+                            <div className="input-box">
                             <label htmlFor="uni">University:</label>
                                     <input type="text" id="uni" name="uni" 
                                     value={uniName} onChange={(e) => setUniName(e.target.value) }required/>
-                                    
+                             </div>  
+                             <div className="input-box">
                             <label htmlFor="dept">Department:</label>
                                     <input type="text" id="dept" name="dept" 
                                     value={deptName} onChange={(e) => setDeptName(e.target.value) } required/>
-                                    
+                            </div>
+                            </div>
+                            
                             {showTextFields && (
-                                <div className="input-container">
+                                <div className="input-box">
                                     <label htmlFor="degree">Degree:</label>
                                     <input type="text" id="degree" name="degree" 
                                     value={degree} onChange={(e) => setDegree(e.target.value) } required/>
@@ -458,8 +454,8 @@ const Register = () => {
                             
                             </div>
                         )}
-                        
-                        <div className="input-container">
+                        <div className="column">
+                        <div className="input-box">
                         <label htmlFor="password">
                             Password:
                             <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
@@ -475,7 +471,6 @@ const Register = () => {
                             aria-describedby="pwdnote"
                             onFocus={() => setPwdFocus(true)}
                             onBlur={() => setPwdFocus(false)}
-                            className="register-textbox"
                         />
                         <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
@@ -484,7 +479,7 @@ const Register = () => {
                             Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
                         </p>
                         </div>
-                        <div className="input-container">
+                        <div className="input-box">
                             
                         <label htmlFor="confirm_pwd">
                             Confirm Password:
@@ -501,18 +496,16 @@ const Register = () => {
                             aria-describedby="confirmnote"
                             onFocus={() => setMatchFocus(true)}
                             onBlur={() => setMatchFocus(false)}
-                            className="register-textbox"
                         />
                         <p id="confirmnote" className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
                             Must match password field.
                         </p><br></br>
                         </div>
+                        </div>
 
                         <button type="submit" disabled={!validName || !validEmail || !affiliationType || 
-                             !validPwd || !validMatch ? true : false}>
-                             {loading?"Loading....":"Sign up"}
-                             </button>
+                             !validPwd || !validMatch ? true : false}>Sign Up</button>
                     </form>
                     <p className="regEnd">
                         Already registered? 
@@ -521,11 +514,12 @@ const Register = () => {
                             <a href="samplelogin" className="reg-link">Sign In</a>
                         </span>
                     </p>
+                    </section>
                 
                 </div>
-                </div>
                 
-            </div>
+                
+            
                 
             )}
             
