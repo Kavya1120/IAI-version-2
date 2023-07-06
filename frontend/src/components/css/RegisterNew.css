@@ -132,6 +132,7 @@ select {
 .input-box label {
   color: #333;
   width: 100%;
+  font-weight: 600;
 }
 .form :where(.input-box input, .select-box) {
   position: relative;
@@ -166,6 +167,10 @@ select {
 .form .gender-box {
   margin-top: 20px;
 }
+.form a{
+  color: navy;
+}
+
 .gender-box h3 {
   color: #333;
   font-size: 1rem;
