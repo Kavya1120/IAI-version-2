@@ -515,7 +515,7 @@ const Register = () => {
                         </div>
 
                         <button type="submit" disabled={!validName || !validEmail || !affiliationType || 
-                             !validPwd || !validMatch ? true : false}>
+                             !validPwd || !validMatch ? true : false} className="reg-btn">
                              {loading?"Loading....":"Sign up"}
                              </button>
                     </form>

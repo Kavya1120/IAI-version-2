@@ -157,15 +157,15 @@ const OtpVerify = ()=>{
                               </div>
                               
                             <div id="otp" class="flex flex-row justify-center text-center px-2 mt-5">
-                                <input class="otp-input m-2 border h-10 w-10 text-center form-control rounded" type="text" id="first" maxLength="1" onChange={ (e)=> setFirst(e.target.value)}/> 
-                                <input class="otp-input m-2 border h-10 w-10 text-center form-control rounded" type="text" id="second" maxLength="1" onChange={ (e)=>setSecond(e.target.value)}/> 
-                                <input class="otp-input m-2 border h-10 w-10 text-center form-control rounded" type="text" id="third" maxLength="1" onChange={ (e)=>setThird(e.target.value)}/> 
-                                <input class="otp-input m-2 border h-10 w-10 text-center form-control rounded" type="text" id="fourth" maxLength="1" onChange={ (e)=>setFourth(e.target.value)}/>
-                                <input class="otp-input m-2 border h-10 w-10 text-center form-control rounded" type="text" id="fifth" maxLength="1" onChange={ (e)=>setFifth(e.target.value)}/> 
-                                <input class="otp-input m-2 border h-10 w-10 text-center form-control rounded" type="text" id="sixth" maxLength="1" onChange={ (e)=>setSixth(e.target.value)}/>
+                                <input class="otp-input m-2 border h-10 w-10 text-center form-control rounded small-otp-box" type="text" id="first" maxLength="1" onChange={ (e)=> setFirst(e.target.value)}/> 
+                                <input class="otp-input m-2 border h-10 w-10 text-center form-control rounded small-otp-box" type="text" id="second" maxLength="1" onChange={ (e)=>setSecond(e.target.value)}/> 
+                                <input class="otp-input m-2 border h-10 w-10 text-center form-control rounded small-otp-box" type="text" id="third" maxLength="1" onChange={ (e)=>setThird(e.target.value)}/> 
+                                <input class="otp-input m-2 border h-10 w-10 text-center form-control rounded small-otp-box" type="text" id="fourth" maxLength="1" onChange={ (e)=>setFourth(e.target.value)}/>
+                                <input class="otp-input m-2 border h-10 w-10 text-center form-control rounded small-otp-box" type="text" id="fifth" maxLength="1" onChange={ (e)=>setFifth(e.target.value)}/> 
+                                <input class="otp-input m-2 border h-10 w-10 text-center form-control rounded small-otp-box" type="text" id="sixth" maxLength="1" onChange={ (e)=>setSixth(e.target.value)}/>
                             </div>
                             <div class="otp-button">
-                              <button type="submit" onClick={handleSubmit}>Submit</button>
+                              <button type="submit" onClick={handleSubmit} className="otp-btn">Submit</button>
                               </div>
                               <div class="flex justify-center text-center mt-5">
                                   <a onClick={resend} class="flex items-center text-blue-700 hover:text-blue-900 cursor-pointer"><span class="font-bold">Resend OTP</span><i class='bx bx-caret-right ml-1'></i></a>

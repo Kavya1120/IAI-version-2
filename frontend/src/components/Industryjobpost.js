@@ -106,6 +106,7 @@ function Industryjobpost() {
         rows={8} 
         cols={70} 
         style={{ resize: 'none',width: '2000px' }} 
+        className='job-desc'
          />
       <br/>
         <br/>
@@ -124,7 +125,7 @@ function Industryjobpost() {
         {image==""||image==null?"": <img width={50} height={100} src={image}/>}
        
         <br/><br/>
-        <center><button onClick={handlesubmit}>POST JOB</button></center>
+        <center><button onClick={handlesubmit} className='job-post-btn'>POST JOB</button></center>
         <br/><br/>
         
         </Container>

@@ -12,3 +12,21 @@
 .otp-container{
     padding-top: 8%;
 }
+.small-otp-box{
+    padding: 0.25rem !important;
+    max-width: 581px !important;
+}
+.otp-btn{
+    font-family: 'Nunito', sans-serif;
+    font-size: initial;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+    max-width: 581px;
+    width: 100%;
+    background-color: #007BFF;
+    color: white;
+}
+
+.otp-btn:hover{
+    background-color: #17477b;
+}

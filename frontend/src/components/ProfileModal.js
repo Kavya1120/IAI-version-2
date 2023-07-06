@@ -193,7 +193,7 @@ const ModalForm = ({ closeModal , rowToEdit }) =>{
           <div className='form-group'>
             <div className='label-icon'>
               <label htmlFor="experience" className='exp-label'>Experience:</label>
-              <BsPlusCircle size={40} onClick={addExperience} className='button-click'></BsPlusCircle>
+              <BsPlusCircle size={25} onClick={addExperience} className='button-click'></BsPlusCircle>
             </div>
               {experience.map((exp , index) => (
                 <div className='form-group' key={index}>

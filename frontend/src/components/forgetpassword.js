@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from 'axios';
 import Image from './signup_image_1.jpg'
+import '../../src/Samplelogin.css'
 
 
 function ForgotPasswordPage() {
@@ -49,7 +50,7 @@ function ForgotPasswordPage() {
                                       <div>
                                           <label>
                                             Enter your email:
-                                            <input type="text" id="email" value={email} onChange={(event)=>{setEmail(event.target.value)}}/>
+                                            <input type="text" id="email" value={email} onChange={(event)=>{setEmail(event.target.value)}} className="forget-pwd-input"/>
                                           </label>
                                           <br/>
                                       </div> <br></br>

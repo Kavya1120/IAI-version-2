@@ -10,6 +10,27 @@
     background-color: #e0ecf5; 
 
   }
+  .job-post-btn{
+    height: 55px;
+  width: 30%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 10px;
+  background: #067db4;
+  }
+.job-desc{
+  font-family: 'Nunito', sans-serif;
+  font-size:initial;
+  padding: 0.25rem;
+  border-radius: 0.3rem;
+  max-width: 581px;
+  width: 100%;
+}
 input:focus,
 input:hover,
 textarea:hover ,
