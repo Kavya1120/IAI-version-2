@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const Uploadpdf = ({ closeModal})=> {
+  const [loading, setLoading] = useState(false)
     const [errors, setErrors] = useState("");
 
     const [file, setFile] = useState(null);
@@ -12,6 +13,7 @@ const Uploadpdf = ({ closeModal})=> {
       setFile(event.target.files[0]);
     };
     const handleSubmit = async (event) => {
+      setLoading(true)
         event.preventDefault();
     
         if (!file) {
@@ -37,6 +39,7 @@ const Uploadpdf = ({ closeModal})=> {
 
         console.log('to the to', postmail);
         try {
+
             const response = await fetch('http://localhost:6080/sendpdfemail', {
               method: 'POST',
               body: formData,
@@ -51,6 +54,9 @@ const Uploadpdf = ({ closeModal})=> {
           } catch (error) {
             console.error(error);
             toast.error ('An error occurred while sending the email.');
+          }
+          finally{
+            setLoading(false)
           }
 
 
@@ -88,7 +94,7 @@ const Uploadpdf = ({ closeModal})=> {
                 </div>
                 {errors && <div className="error">{`Please include: ${errors}`}</div>}
                 <button type="submit" className='btn job-btn'>
-                    Upload and Submit
+                   {loading?"Loading ...":" Upload and Submit"}
                 </button>
             </form>
             </div>
