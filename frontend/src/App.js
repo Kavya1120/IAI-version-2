@@ -30,7 +30,9 @@ import Newupload from "./admin/newUpload"
 import Buckect from "./buckect"
 import RegisterNew from "./components/RegisterNew";
 
+import Bot from "./components/chatgpt"
 
+  
 function App() {
   const loggedin = localStorage.getItem("is logged in");
   return (
@@ -39,7 +41,7 @@ function App() {
       
     <Routes>
     <Route path="/register" element={<Register />} />
-    <Route path="/registerNew" element={<RegisterNew />} />
+    <Route path="/chatgpt" element={<Bot />} />
     <Route path="/search"  element={<SearchBar placeholder="Search here..." data={Data}/>} />
     <Route path="/login" element={<Login />} />
     <Route path="/buckect" element={<Buckect/>} />
