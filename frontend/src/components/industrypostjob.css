@@ -30,10 +30,12 @@
   border-radius: 0.3rem;
   max-width: 581px;
   width: 100%;
+  border-radius: 10px;
 }
 input:focus,
 input:hover,
 textarea:hover ,
 textarea:focus {
   outline: 2.3px solid rgb(7, 171, 119); 
+  border-radius: 10px;
 }
