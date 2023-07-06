@@ -38,8 +38,8 @@ function App() {
     <div>
       
     <Routes>
-    <Route path="/register" element={<Register />} />
-    <Route path="/registerNew" element={<RegisterNew />} />
+    <Route path="/register" element={<RegisterNew />} />
+    {/* <Route path="/registerNew" element={<RegisterNew />} /> */}
     <Route path="/search"  element={<SearchBar placeholder="Search here..." data={Data}/>} />
     <Route path="/login" element={<Login />} />
     <Route path="/buckect" element={<Buckect/>} />
