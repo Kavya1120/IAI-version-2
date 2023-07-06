@@ -197,7 +197,7 @@ const ModalForm = ({ closeModal , rowToEdit }) =>{
             </div>
               {experience.map((exp , index) => (
                 <div className='form-group' key={index}>
-                  <h3>Experience #{index+1}</h3>
+              {/* <h3>Experience #{index+1}</h3>*/}
                   <label htmlFor={`companyName-${index}`}>Company:</label>
                     <input type="text" id={`companyName-${index}`} value={exp.companyName} onChange={(e) => updateExperienceField(index, 'companyName', e.target.value)}  className='profileModal'/>
                     <label htmlFor={`jobRole-${index}`}>Job Role:</label>
@@ -235,7 +235,7 @@ const ModalForm = ({ closeModal , rowToEdit }) =>{
           </div>
           {education.map((edu, index) => (
             <div className='form-group' key={index}>
-              <h3>Degree #{index + 1}</h3>
+          {/* <h3>Degree #{index + 1}</h3>*/}
               <label htmlFor={`university-${index}`}>University/college:</label>
               <input
                 type="text"

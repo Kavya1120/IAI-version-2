@@ -35,7 +35,7 @@ const Jobstest =({openModal ,closeModal})=>{
   
 
 
-  const render=   detail.map((job,val)=>{
+  const render=   detail.reverse().map((job,val)=>{
             return(
                 <div className="job-item p-4 mb-4">
                 <div className="row g-4">
