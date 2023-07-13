@@ -1,6 +1,8 @@
 import React from 'react'
 import {Container} from 'react-bootstrap'
 // import "./home.css";
+import image1 from './images/homeimg1.jpg'
+import image2 from './images/homeimg3.jpg'
 import "./newhome.css";
 import Navbar1 from './components/Navbar1';
 import Footer from './components/footer';
@@ -10,8 +12,7 @@ import Caarousel from './components/corousel';
 
 function Home() {
 
-  const imageurl = "https://media.istockphoto.com/id/481744325/photo/raj-path-the-kings-way-new-delhi.jpg?s=612x612&w=0&k=20&c=FCCYzvRecxzlSiwJOaST4Goi4aQ5KTlK4jJ0P86Kqc0=";
-  const imageurl1 = "https://thumbs.dreamstime.com/b/indian-national-emblem-flag-vidhana-soudh-bangalore-bengaluru-indian-national-emblem-flag-vidhana-soudh-bangalore-bengaluru-india-174014638.jpg"
+
   return (
 
     <>
@@ -22,8 +23,8 @@ function Home() {
 
 
        <div style={{marginTop:'130px'}}>
-         <Caarousel imageurl={imageurl}
-                    imageurl1={imageurl1}
+         <Caarousel imageurl={image1}
+                    imageurl1={image2}
          />
       </div>
 

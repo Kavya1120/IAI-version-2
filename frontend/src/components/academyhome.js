@@ -1,6 +1,8 @@
 import React from 'react'
 import {Container} from 'react-bootstrap'
 import "../newhome.css";
+import image1 from "../images/academyhome.jpg"
+import image2 from "../images/academyhome2.jpg"
 import Navbar1 from './Navbar1';
 import Footer from './footer';
 import NewsFeed from './newsfeed';
@@ -37,8 +39,8 @@ function Academy() {
        <div style={{marginTop:'130px'}}> 
                   <Caarousel  
 
-                        imageurl="https://cdn.dnaindia.com/sites/default/files/styles/full/public/2016/01/26/418798-parliament.jpg"
-                        imageurl1="https://www.odishanewstimes.com/wp-content/uploads/2021/05/acnts-620x330.jpg"
+                        imageurl={image1}
+                        imageurl1={image2}
 
                   />
       </div>
