@@ -11,6 +11,9 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
 function Login() {
+  
+  const [loading, setLoading] = useState(false);
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [validEmail, setValidEmail] = useState(false); 
@@ -45,20 +48,24 @@ useEffect(() => {
   };
 
   const handleSubmit = (e) => {
+    setLoading(true)
+
     
     e.preventDefault();
     console.log(email)
-    // const v2 = PWD_REGEX.test(password);
+   
     const v3 = EMAIL_REGEX.test(email);
 
     if(!v3){
+      setLoading(false)
       toast.error("Please enter a valid mail ID")
     }
 
-    if (!v3) {
-      setErrMsg("Invalid Entry");
-      return;
-  }
+  //   if (!v3) {
+  //     setLoading(false)
+  //     setErrMsg("Invalid Entry");
+  //     return;
+  // }
     try {
         window.localStorage.setItem("userMail",email);
         
@@ -85,6 +92,7 @@ useEffect(() => {
                     if(res.data.status==="success for academy"){
                       console.log('hi')
                       localStorage.setItem("userName",res.data.name)
+                      setLoading(false)
                       toast.success("Login Successful")
                       if(res.data.details==true){
                         window.location.href="academy";
@@ -94,6 +102,7 @@ useEffect(() => {
                       }
                     }
                     else{
+                      setLoading(false)
                       toast.error('Please enter Valid Credentials')
                       console.log('error')
                     }
@@ -116,6 +125,7 @@ useEffect(() => {
                 if(res.data.status==="success for industry"){
                   console.log('hi')
                   localStorage.setItem("userName",res.data.name)
+                  setLoading(false)
                   toast.success("Login Successful")
                   if(res.data.details==true){
                     window.location.href="industry";
@@ -126,6 +136,7 @@ useEffect(() => {
                   
                 }
                 else{
+                  setLoading(false)
                   toast.error("Please enter Valid Credentials");
                   console.log('error')
                 }
@@ -135,21 +146,20 @@ useEffect(() => {
                 window.localStorage.setItem("affiliation","industry")
             })
             }
-            else{
-               alert('user not registered');
+            else{            
+              setLoading(false)
+              alert("user not registered")
             }
         })
     }
     catch(err) {
+      setLoading(false)
       console.log('error occured', err);
-    };
+    }
+   
   };
 
   return (
-    
-
-              
-
                             <div className="reg-form-body"> 
                             <ToastContainer />
 
@@ -206,11 +216,9 @@ useEffect(() => {
                                           <a href="forgotpassword" className="login-forgetpassword-link">Forgot password?</a>
                                         </p>
                                         </div>
-
-
-                                        <button class="submit-button" type="submit"  className="login-button">Submit</button>
-
-
+                                        <button class="submit-button" type="submit" className="Login-button" >
+                                        {loading ? "Loading..." : "Submit"}
+                                        </button>
                               </form>
                       </section>
                       </div>

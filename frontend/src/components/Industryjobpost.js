@@ -9,6 +9,7 @@ import "./industrypostjob.css";
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function Industryjobpost() {
+  const [loading, setLoading] = useState(false)
     const [designation, setDesignation] = useState("");
     const [description, setDescription] = useState("");
     const [city, setCity] = useState("");
@@ -22,6 +23,7 @@ function Industryjobpost() {
     const navigate=useNavigate();
     const handlesubmit= (e)=>
     {
+      setLoading(true)
       e.preventDefault();
       var today = new window.Date();
 
@@ -58,8 +60,13 @@ function Industryjobpost() {
             setTimeout(4000);
             window.location.href="industrypost"
         }).catch((e)=>{
+          setLoading(false)
             console.log('Error occured ', e);
         })
+        .finally(()=> {
+          setLoading(false)
+        }
+        )
     }
     function convertToBase64(e)
     {
@@ -125,7 +132,9 @@ function Industryjobpost() {
         {image==""||image==null?"": <img width={50} height={100} src={image}/>}
        
         <br/><br/>
-        <center><button onClick={handlesubmit} className='job-post-btn'>POST JOB</button></center>
+        <center><button onClick={handlesubmit} className='job-post-btn'>
+        POST JOB
+        </button></center>
         <br/><br/>
         
         </Container>
