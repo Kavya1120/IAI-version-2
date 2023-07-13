@@ -145,6 +145,11 @@ color: #fff;
   margin-right: 25px;
   margin-top: 5px;
 }
+.profile-desc-row .left-icon{
+  width: 50px;
+  margin-right: 25px;
+  margin-top: 5px;
+}
 .profile-desc-row div{
   width: 100%;
 }

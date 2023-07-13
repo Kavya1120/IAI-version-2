@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from "react-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGraduationCap , faBriefcase} from '@fortawesome/free-solid-svg-icons';
 import coverimg from "../images/cover-pic.png"
 import usermainImg from "../images/user-main.jpg"
 import microsoftImg from "../images/microsoft.png"
@@ -159,7 +161,8 @@ const handleMouseEnter = () => {
                 <h2>Experience</h2>
             {profileData.experience.map((expe,index) =>(
                 <div className="profile-desc-row">
-                    <img src={microsoftImg}/>
+                  <FontAwesomeIcon icon={faBriefcase}  className='left-icon'/>
+                    {/* <img src={microsoftImg}/> */}
                     <div>
                         <h3>
                             {expe.jobRole}
@@ -179,7 +182,10 @@ const handleMouseEnter = () => {
                 <h2>Education</h2>
             {profileData.education && profileData.education.map((educ, index) => (
                 <div className="profile-desc-row" >
-                    <img src={stanfordImg} />
+                  
+                    <FontAwesomeIcon icon={faGraduationCap}  className='left-icon'/>
+                  
+                    {/* <img src={stanfordImg} /> */}
                     <div>
                         <h3>{educ.university}</h3>
                         <b>{educ.degree}, {educ.department}</b>
