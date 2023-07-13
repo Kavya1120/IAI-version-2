@@ -2,6 +2,7 @@
 import { useRef, useState, useEffect } from "react";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PasswordChecklist from "react-password-checklist"
 import "./components/css/RegisterNew.css"; 
 import Image from './assets/signup_image_1.jpg'
 import Axios  from "axios";
@@ -24,8 +25,12 @@ const Register = () => {
     const [userFocus, setUserFocus] = useState(false);
 
     const [pwd, setPwd] = useState('');
+    const [passwordAgain, setPasswordAgain] = useState("")
     const [validPwd, setValidPwd] = useState(false);
     const [pwdFocus, setPwdFocus] = useState(false);
+
+     const [showPasswordChecklist , setShowPasswordChecklist] = useState(false)
+    const [showConfirmPwdCheckList , setshowConfirmPwdCheckList ] = useState(false)
 
     const [email, setEmail] = useState('');
     const [validEmail, setValidEmail] = useState(false); 
@@ -65,6 +70,12 @@ const Register = () => {
     const handleSelectChange = (e) =>{
         setChamberMember(e.target.value);
     }
+    const handlePasswordFocus = () => {
+        setShowPasswordChecklist(true);
+      };
+    const handleConfirmPasswordFocus = () => {
+        setshowConfirmPwdCheckList(true);
+      };
     const handleAffiliationTypeChange = (e) => {
         const selectedType = e.target.value.toLowerCase();
         setAffiliationType(selectedType);
@@ -121,12 +132,12 @@ const Register = () => {
 
     useEffect(() => {
         setValidPwd(PWD_REGEX.test(pwd));
-        setValidMatch(pwd === matchPwd);
-    }, [pwd, matchPwd])
+        setValidMatch(pwd === passwordAgain);
+    }, [pwd, passwordAgain])
 
     useEffect(() => {
         setErrMsg('');
-    }, [user, pwd, matchPwd])
+    }, [user, pwd, passwordAgain])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -213,6 +224,7 @@ const Register = () => {
                 setUser('');
                 setPwd('');
                 setMatchPwd('');
+                setPasswordAgain('')
                 setAcademicPosition('');
                 setCompanyName('');
                 setDesignationName('');
@@ -291,6 +303,7 @@ const Register = () => {
                 setUser('');
                 setPwd('');
                 setMatchPwd('');
+                setPasswordAgain('')
                 setAcademicPosition('');
                 setCompanyName('');
                 setDesignationName('');
@@ -479,38 +492,62 @@ const Register = () => {
                             required
                             aria-invalid={validPwd ? "false" : "true"}
                             aria-describedby="pwdnote"
-                            onFocus={() => setPwdFocus(true)}
+                            onFocus={handlePasswordFocus}
                             onBlur={() => setPwdFocus(false)}
                         />
-                        <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
+                        {/* <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
                             8 to 24 characters.<br />
                             Must include uppercase and lowercase letters, a number and a special character.<br />
                             Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
-                        </p>
+                        </p> */}
+                        {showPasswordChecklist &&
+                                      <PasswordChecklist
+                                          rules={["minLength","specialChar","number","capital"]}
+                                          minLength={8}
+                                          value={pwd}
+                                        
+                                          messages={{
+                                            minLength: "Password has more than 8 characters.",
+                                            specialChar: "Password has special characters.",
+                                            number: "Password has a number.",
+                                            capital: "Password has a capital letter.",
+                                            
+                                      }}
+			            />}
+
                         </div>
                         <div className="input-box">
                             
                         <label htmlFor="confirm_pwd">
                             Confirm Password:
-                            <FontAwesomeIcon icon={faCheck} className={validMatch && matchPwd ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={validMatch || !matchPwd ? "hide" : "invalid"} />
+                            <FontAwesomeIcon icon={faCheck} className={validMatch && passwordAgain ? "valid" : "hide"} />
+                            <FontAwesomeIcon icon={faTimes} className={validMatch || !passwordAgain ? "hide" : "invalid"} />
                         </label>
                         <input
                             type="password"
                             id="confirm_pwd"
-                            onChange={(e) => setMatchPwd(e.target.value)}
-                            value={matchPwd}
+                            onChange={(e) => setPasswordAgain(e.target.value)}
+                            value={passwordAgain}
                             required
                             aria-invalid={validMatch ? "false" : "true"}
                             aria-describedby="confirmnote"
-                            onFocus={() => setMatchFocus(true)}
+                            onFocus={handleConfirmPasswordFocus}
                             onBlur={() => setMatchFocus(false)}
                         />
-                        <p id="confirmnote" className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
+                        {/* <p id="confirmnote" className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
                             Must match password field.
-                        </p><br></br>
+                        </p><br></br> */}
+                        {showConfirmPwdCheckList && <PasswordChecklist
+                            rules={["match"]}
+                            value={pwd}
+                            valueAgain={passwordAgain}
+                            messages={{
+                                match: "Passwords match.",
+                            }}
+                        />
+}
                         </div>
                         </div>
 
