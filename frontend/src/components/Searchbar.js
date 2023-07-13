@@ -3,23 +3,44 @@ import "./Searchbar.css";
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import Navbar1 from './Navbar1';
+import axios from "axios";
 function SearchBar({ placeholder, data }) {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
 
-  const handleChange = (e) => {
-    const searchWord = e.target.value;
-    setWordEntered(searchWord);
-    const newFilter = data.filter((value) => {
-      return value.title.toLowerCase().includes(searchWord.toLowerCase());
-    });
+    const handleChange = async(e) => {
+      const searchWord = e.target.value;
+      setWordEntered(searchWord);
+      const newFilter = data.filter((value) => {
+        return value.title.toLowerCase().includes(searchWord.toLowerCase());
+      });
 
-    if (searchWord === "") {
-      setFilteredData([]);
-    } else {
-      setFilteredData(newFilter);
-    }
-  };
+      if (searchWord === "") {
+        setFilteredData([]);
+      } else {
+        await axios.post('http://localhost:6080/search',{
+          payload:searchWord
+        }).then((res)=>{
+          // console.log('results in the res',res.data.results)
+          const data2 = res.data.results
+          // console.log('response from the serp api', res.data.results)
+          const newfilter2 = data2.filter((item)=>{
+            return item.value.toLowerCase().includes(searchWord.toLowerCase())
+          }) 
+          // console.log("final res in the new filter2", newfilter2)       
+          // console.log("final res", filteredData);
+          // setFilteredData(newfilter2);
+          const mergedData = [...newFilter, ...newfilter2]
+          console.log("final res", mergedData)
+          setFilteredData(mergedData);
+          console.log(mergedData)
+          
+        }).catch((e)=>{
+          console.log('error occured in serp api', e)
+        })
+        
+      }
+    };
 
   const clearInput = () => {
     setFilteredData([]);
@@ -45,17 +66,37 @@ function SearchBar({ placeholder, data }) {
           )}
         </div>
       </div>
-      {filteredData.length != 0 && (
-        <div className="dataResult">
-          {filteredData.slice(0, 15).map((value, key) => {
-            return (
-              <a className="dataItem" href={value.link} target="_blank">
-                <p className="searchbar-paragraph">{value.title} </p>
-              </a>
-            );
-          })}
-        </div>
-      )}
+      {
+  filteredData.length != 0 && (
+    <div className="dataResult">
+      {filteredData.slice(0, 15).map((item, key) => {
+        if (item.link) {
+          return (
+            <a
+              className="dataItem"
+              href={item.link}
+              target="_blank"
+              title={item.title}
+            >
+              <p className="searchbar-paragraph">{item.title}</p>
+            </a>
+          );
+        } else {
+          return (
+            <a
+              className="dataItem"
+              href={item.serpapi_link}
+              target="_blank"
+              title={item.value}
+            >
+              <p className="searchbar-paragraph">{item.value}</p>
+            </a>
+          );
+        }
+      })}
+    </div>
+  )
+}
     </div>
   );
 }

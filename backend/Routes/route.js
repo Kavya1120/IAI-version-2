@@ -10,8 +10,34 @@ const nodemailer = require('nodemailer');
 const jwt = require('jsonwebtoken')
 const otp = require('otp-generator')
 const job=require('../Schema/jobs')
+require('dotenv').config();
 // const academyProfile=require('../Schema/academy')
 const JWT_SECRET = "ciwbuconciwevccwu1229238c/idb871cb91383hc}28vwrgbw8b748{62[]()68cwv";
+
+
+
+const google=require("google-search-results-nodejs");
+const search=new google.GoogleSearch(process.env.SEARCH_API);
+
+router.post("/search",async function(req,res){
+    autocompleteResults=[]
+    console.log("request in the search", req)
+    const payload=req.body.payload;
+    console.log('payload', payload)
+    const params={
+        q:payload,
+        engine:"google_autocomplete",
+        location: "Austin, TX"
+    };
+    search.json(params,function(results){
+        console.log("result from the results , ashwin ",results)
+        autocompleteResults=results.suggestions;
+        autocompleteResults=autocompleteResults.splice(0,3);
+        return res.json({
+            results:autocompleteResults
+        })
+    })
+})
 
 router.post('/', async(req, res)=>{
     console.log('hello user')
