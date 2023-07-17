@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "Industrial Academic Interaction portal",
   "main": "index.js",
-  "scripts": {
+  "scripts":
+   {
     "test": "echo \"Error: no test specified\" && exit 1"
+  
   },
   "repository": {
     "type": "git",

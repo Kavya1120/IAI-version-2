@@ -1,6 +1,6 @@
 import React from 'react'
 import {Container} from 'react-bootstrap'
-// import "./home.css";
+import "./home1.css";
 import image1 from './images/homeimg1.jpg'
 import image2 from './images/homeimg3.jpg'
 import "./newhome.css";
@@ -8,6 +8,7 @@ import Navbar1 from './components/Navbar1';
 import Footer from './components/footer';
 import NewsFeed from './components/newsfeed';
 import Caarousel from './components/corousel';
+
 //import image from './images/img1.jpg';
 
 function Home() {
@@ -57,7 +58,7 @@ function Home() {
       
 {/*  */}
 
-<div class="row">
+<div class="row newcss">
             <div class="col-md-6">
                 <div class="demo-content">
                 <p><NewsFeed ></NewsFeed></p>     

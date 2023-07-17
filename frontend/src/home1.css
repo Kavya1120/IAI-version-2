@@ -1,0 +1,22 @@
+@media (max-width: 600px) {
+    /* CSS rules for small screens */
+    .newcss{
+      flex-direction: column;
+    }
+  }
+  
+  /* Styles for screens between 601 and 900 pixels wide */
+  @media (min-width: 601px) and (max-width: 900px) {
+    /* CSS rules for medium screens */
+    body {
+      font-size: 16px;
+    }
+  }
+  
+  /* Styles for screens larger than 900 pixels wide */
+  @media (min-width: 901px) {
+    /* CSS rules for large screens */
+    body {
+      font-size: 18px;
+    }
+  }
